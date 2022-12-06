@@ -38,8 +38,8 @@ public class Maza {
       }
       int ch = System.in.read();
       var next = switch (ch) {
-        case 'u' -> new Position(current.x() - 1, current.y());
-        case 'h' -> new Position(current.x(), current.y() - 1);
+        case 'h' -> new Position(current.x() - 1, current.y());
+        case 'u' -> new Position(current.x(), current.y() - 1);
         case 'j' -> new Position(current.x() + 1, current.y());
         case 'n' -> new Position(current.x(), current.y() + 1);
         default -> current;
