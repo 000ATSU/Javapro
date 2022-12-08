@@ -5,13 +5,8 @@ import java.util.List;
 public class StreamSample2 {
   public static void main(String[] args) {
     var data = List.of("yamamoto", "kis", "sugiyama");
-    var resutl = 0;
+    var resutl = (int) data.stream().filter(s -> s.length() >= 5).count();
 
-    for (var s : data) {
-      if (s.length() >= 5) {
-        resutl++;
-      }
-    }
     System.out.println(resutl);
   }
 }
