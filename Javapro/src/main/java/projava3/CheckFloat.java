@@ -2,7 +2,7 @@ package projava3;
 
 public class CheckFloat {
   enum FloatState {
-    START, INT, FRAC_START, FRAC, FIN, ZERO
+    START, INT, FRAC_START, FRAC, FIN, MINUS, ZERO
   }
 
   static boolean check(String data) {
