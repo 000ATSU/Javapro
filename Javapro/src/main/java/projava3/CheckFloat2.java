@@ -1,42 +1,51 @@
 package projava3;
 
-public class CheckFloat {
+public class CheckFloat2 {
   enum FloatState {
-    START, INT, FRAC_START, FRAC, FIN, ZERO
+    START, INT, FRAC_START, FRAC, ZERO, FIN
   }
 
   static boolean check(String data) {
-    var state = FloatState.START;
+    var state = CheckFloat.FloatState.START;
     for (char ch : data.toCharArray()) {
       switch (state) {
         case START -> {
           if (ch == '0') {
-            state = FloatState.ZERO;
+            state = CheckFloat.FloatState.ZERO;
           } else if (ch >= '1' && ch <= '9') {
-            state = FloatState.INT;
+            state = CheckFloat.FloatState.INT;
           } else {
             return false;
           }
         }
         case ZERO -> {
           if (ch == '.') {
-            state = FloatState.FRAC_START;
+            state = CheckFloat.FloatState.FRAC_START;
           } else {
             return false;
           }
         }
         case INT -> {
           if (ch >= '0' && ch <= '9') {
-            state = FloatState.INT;
+            state = CheckFloat.FloatState.INT;
           } else if (ch == '.') {
-            state = FloatState.INT;
+            state = CheckFloat.FloatState.INT;
           } else {
             return false;
           }
         }
         case FRAC_START, FRAC -> {
-          if (ch >= '0' && ch <= '9') {
-            state = FloatState.FRAC;
+          if (ch >= '1' && ch <= '9') {
+            state = CheckFloat.FloatState.FRAC;
+          } else if (ch == '0') {
+            state = CheckFloat.FloatState.FIN;
+          } else {
+            return false;
+          }
+        }
+        case FIN -> {
+          if (ch != '0') {
+            state = CheckFloat.FloatState.FRAC;
           } else {
             return false;
           }
@@ -50,16 +59,6 @@ public class CheckFloat {
   }
 
   public static void main(String[] args) {
-    System.out.println(check(""));
-    System.out.println(check("012"));
-    System.out.println(check(".12"));
-    System.out.println(check("12."));
-    System.out.println(check("1.2.3"));
-    System.out.println(check("1.3"));
-    System.out.println(check("0"));
-    System.out.println(check("12"));
-    System.out.println(check("12.3"));
-    System.out.println(check("0.3"));
-    System.out.println(check("12.30"));
+    System.out.println(check("0.12"));
   }
 }
