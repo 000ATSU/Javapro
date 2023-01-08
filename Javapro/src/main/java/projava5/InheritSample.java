@@ -3,7 +3,7 @@ package projava5;
 import java.util.List;
 
 public class InheritSample {
-  static class User {
+  static abstract class User {
     String name;
 
     User(String name) {
@@ -12,6 +12,13 @@ public class InheritSample {
 
     public String getName() {
       return name;
+    }
+
+    abstract String profile();
+
+    @Override
+    public String toString() {
+      return profile();
     }
   }
 
@@ -26,6 +33,11 @@ public class InheritSample {
     public int getScore() {
       return score;
     }
+
+    @Override
+    String profile() {
+      return "学生 %s, %d点".formatted(getName(), getScore());
+    }
   }
 
   static class Teacher extends User {
@@ -39,6 +51,11 @@ public class InheritSample {
     public String getSubject() {
       return subject;
     }
+
+    @Override
+    String profile() {
+      return "先生 %s, 教科 %s".formatted(getName(), getSubject());
+    }
   }
 
   public static void main(String[] args) {
@@ -46,6 +63,7 @@ public class InheritSample {
             new Student("kis", 80),
             new Teacher("hosoya", "Math"));
     for (var p : peple) {
+      System.out.println(p);
       System.out.println("こんにちは%sさん".formatted(p.getName()));
     }
   }
