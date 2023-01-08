@@ -1,0 +1,53 @@
+package projava5;
+
+import java.util.List;
+
+public class InheritSample {
+  static class User {
+    String name;
+
+    User(String name) {
+      this.name = name;
+    }
+
+    public String getName() {
+      return name;
+    }
+  }
+
+  static class Student extends User {
+    int score;
+
+    Student(String name, int score) {
+      super(name);
+      this.score = score;
+    }
+
+    public int getScore() {
+      return score;
+    }
+  }
+
+  static class Teacher extends User {
+    String subject;
+
+    Teacher(String name, String subject) {
+      super(name);
+      this.subject = subject;
+    }
+
+    public String getSubject() {
+      return subject;
+    }
+  }
+
+  public static void main(String[] args) {
+    List<User> peple = List.of(
+            new Student("kis", 80),
+            new Teacher("hosoya", "Math"));
+    for (var p : peple) {
+      System.out.println("こんにちは%sさん".formatted(p.getName()));
+    }
+  }
+}
+
