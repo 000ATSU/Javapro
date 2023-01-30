@@ -19,5 +19,4 @@ public class Javadoc {
     boolean x = isSummerOlympicYear(2012);
     System.out.println(x);
   }
-
 }
