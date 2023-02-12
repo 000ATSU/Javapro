@@ -1,14 +1,16 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class free {
   public static void main(String[] args) {
-    int a = 10;
-
-    int count = 0;
-    for (int i = 0; i < a; i++) {
-      for (int j = 0; j < a; j++) {
-        count++;
+    Timer timer = new Timer();
+    TimerTask task = new TimerTask() {
+      public void run() {
+        System.out.println("Task is executed.");
       }
-    }
+    };
 
-    System.out.println(count);
+    timer.schedule(task, 2000); // 5 seconds
   }
 }
+
